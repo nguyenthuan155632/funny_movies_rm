@@ -6,7 +6,7 @@ module MovieHelper
       :iframe,
       nil,
       src: video_embed(movie.url),
-      width: 560,
+      width: '100%',
       height: 315,
       title: movie.title,
       frameborder: '0',

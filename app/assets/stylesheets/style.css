@@ -99,3 +99,9 @@ footer.page-footer {
   right: 40px;
   bottom: -36px;
 }
+
+@media only screen and (max-width : 992px) {
+  iframe {
+    height: 250px;
+  }
+}
