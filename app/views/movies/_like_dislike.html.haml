@@ -1,8 +1,8 @@
-%span
+%span{style: ('pointer-events: none' unless user_signed_in?)}
   = link_to like_movie_path(movie), method: :put, remote: true do
     %span
     = movie.get_likes.size
-    %i.material-icons{style: 'color: #fa4242'}
+    %i.material-icons{style: "color: #{user_signed_in? ? '#fa4242': 'grey'}"}
       favorite
   = link_to dislike_movie_path(movie), method: :put, remote: true do
     %span

@@ -1,8 +1,9 @@
-%a{class: 'waves-effect waves-light btn modal-trigger', href: '#share-movie'}
+%a{class: 'waves-effect waves-light btn modal-trigger', href: (user_signed_in? ? '#share-movie' : new_user_session_path)}
   Share a movie
 #share-movie.modal
   = form_for @movie, url: movies_path, html: {class: 'col s12'} do |f|
-    = f.hidden_field :user_id, value: current_user.id
+    - if user_signed_in?
+      = f.hidden_field :user_id, value: current_user.id
     .modal-content
       %h4 Share a movie
       .row

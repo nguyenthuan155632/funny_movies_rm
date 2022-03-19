@@ -2,6 +2,7 @@
 
 module Movies
   class DislikesController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_movie, only: :update
 
     def update
