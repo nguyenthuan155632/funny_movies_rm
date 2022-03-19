@@ -1,0 +1,28 @@
+.login-form
+  .box
+    .box-form
+      .box-login-tab
+      .box-login-title
+        .i.i-login
+        %h2 REGISTER
+      .box-login
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          .fieldset-body
+            = link_to 'LOGIN', new_user_session_path, class: 'b b-form'
+            = render "devise/shared/error_messages", resource: resource
+            %p.field
+              = f.label :email, 'EMAIL'
+              = f.email_field :email, autofocus: true, autocomplete: "email"
+              %span.i.i-warning
+            %p.field
+              = f.label :password, 'PASSWORD'
+              - if @minimum_password_length
+                %small
+                  (#{@minimum_password_length} characters minimum)
+              = f.password_field :password, autocomplete: "new-password"
+              %span.i.i-close
+            %p.field
+              = f.label :password_confirmation, 'PASSWORD CONFIRMATION'
+              = f.password_field :password_confirmation, autocomplete: "new-password"
+              %span.i.i-warning
+            = f.submit "Register"

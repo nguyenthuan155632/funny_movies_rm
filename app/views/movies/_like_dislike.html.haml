@@ -1,0 +1,11 @@
+%span
+  = link_to like_movie_path(movie), method: :put, remote: true do
+    %span
+    = movie.get_likes.size
+    %i.material-icons{style: 'color: #fa4242'}
+      favorite
+  = link_to dislike_movie_path(movie), method: :put, remote: true do
+    %span
+      = movie.get_dislikes.size
+    %i.material-icons{style: 'color: grey'}
+      favorite_border

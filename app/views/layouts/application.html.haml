@@ -1,0 +1,51 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Funny Movies - Remitano
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
+    = stylesheet_link_tag 'application', media: 'all'
+    %script{:src => "https://code.jquery.com/jquery-2.1.1.min.js"}
+    = javascript_pack_tag 'application'
+  %body
+    %nav.white{:role => "navigation"}
+      .nav-wrapper.container
+        .row
+          .col.l4.s12
+            %i.material-icons.large{style: 'font-size: 30px; color: #444; transform: rotate(90deg);'}
+              movie
+            %a#logo-container.brand-logo{:href => "#"} Funny Movies
+          - if user_signed_in?
+            .col.l6.s12.right-align
+              %span{style: 'color: black'}
+                Welcome
+                %i.material-icons
+                  people
+                %a.blue-text{href: "mailto:#{current_user.email}", target: '_blank'}
+                  = current_user.email
+            .col.l2.s12.right-align
+              = button_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-primary'
+    .container{style: 'padding: 30px 0'}
+      = yield
+    %footer.page-footer.teal
+      .container
+        .row
+          .col.l6.s12
+            %h5.white-text Funny Movies
+      .footer-copyright
+        .container
+          .row
+            .col.l6
+              Made by
+              %a.brown-text.text-lighten-3{:href => "http://materializecss.com"} Materialize
+            .col.l6
+              %a.right{href: 'mailto:nt.apple.it@gmail.com', target: '_blank', style: 'color: rgba(255, 255, 255, 0.8);'}
+                Email: nt.apple.it@gmail.com
+
+:javascript
+  $(document).ready(function(){
+    $('.modal').modal();
+  });

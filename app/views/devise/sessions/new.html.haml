@@ -1,0 +1,24 @@
+.login-form
+  .box
+    .box-form
+      .box-login-tab
+      .box-login-title
+        .i.i-login
+        %h2 LOGIN
+      .box-login
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .fieldset-body
+            = link_to 'Register', new_user_registration_path, class: 'b b-form'
+            %p.field
+              = f.label :email, 'EMAIL'
+              = f.email_field :email, autofocus: true, autocomplete: "email"
+              %span.i.i-warning
+            %p.field
+              = f.label :password, 'PASSWORD'
+              = f.password_field :password, autocomplete: "current-password"
+              %span.i.i-close
+            - if devise_mapping.rememberable?
+              %label.checkbox
+                = f.check_box :remember_me, {:title => "Keep me Signed in", :type => "checkbox", :value => "TRUE"}
+                Keep me Signed in
+            = f.submit "GET STARTED"
