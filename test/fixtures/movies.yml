@@ -13,12 +13,6 @@
 
 one:
   user: one
-  url: MyString
-  title: MyString
-  description: MyText
-
-two:
-  user: two
-  url: MyString
-  title: MyString
-  description: MyText
+  url: https://www.youtube.com/watch?v=oXXI9wfTgBY
+  title: My title
+  description: My description

@@ -3,6 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe MoviesController, type: :controller do
+  shared_examples 'user need to sign in' do
+    it 'has flash message' do
+      subject
+      expect(request.flash[:alert]).to eq('You need to sign in or sign up before continuing.')
+    end
+
+    it { is_expected.to have_http_status 302 }
+  end
+
   describe 'POST /movies' do
     subject do
       post :create, params: {
@@ -18,12 +27,7 @@ RSpec.describe MoviesController, type: :controller do
     let!(:user) { create(:user) }
 
     context 'when user have not signed in yet' do
-      it 'has flash message' do
-        subject
-        expect(request.flash[:alert]).to eq('You need to sign in or sign up before continuing.')
-      end
-
-      it { is_expected.to have_http_status 302 }
+      include_examples 'user need to sign in'
     end
 
     context 'when user signed in and created successfully' do
@@ -68,12 +72,7 @@ RSpec.describe MoviesController, type: :controller do
     let!(:user) { create(:user) }
 
     context 'when user have not signed in yet' do
-      it 'has flash message' do
-        subject
-        expect(request.flash[:alert]).to eq('You need to sign in or sign up before continuing.')
-      end
-
-      it { is_expected.to have_http_status 302 }
+      include_examples 'user need to sign in'
     end
 
     context 'when user signed in and destroyed successfully' do
