@@ -33,22 +33,25 @@
     to post your movie!
 - else
   %div{style: 'margin: 30px 0'}
-  - @movies.each_with_index do |movie, index|
-    .row
-      .col.l6.s12.center-align{style: 'padding: 10px'}
-        = movie_iframe(movie)
-      .col.l6.s12{style: 'padding: 10px; position: relative;'}
-        %h5{style: 'margin-top: 0'}
-          = movie.title
-        %strong
-          Shared by:
-          = movie.user.email
-        %p{id: "like-dislike-group-#{movie.id}", style: 'margin-bottom: 0'}
-          = render 'movies/like_dislike', movie: movie
-        .description
-          = simple_format movie.description
-        - if current_user == movie.user
-          .delete-movie
-            = link_to 'Delete', movie_path(movie), method: :delete, data: { confirm: 'Are you sure?' }, class: 'red-text'
-    - if index != @movies.count - 1
-      %hr{style: 'margin: 40px;'}
+    - @movies.each_with_index do |movie, index|
+      .row
+        .col.l6.s12.center-align{style: 'padding: 10px'}
+          = movie_iframe(movie)
+        .col.l6.s12{style: 'padding: 10px; position: relative;'}
+          %h5{style: 'margin-top: 0'}
+            = movie.title
+          %strong
+            Shared by:
+            = movie.user.email
+          %p{id: "like-dislike-group-#{movie.id}", style: 'margin-bottom: 0'}
+            = render 'movies/like_dislike', movie: movie
+          .description
+            = simple_format movie.description
+          - if current_user == movie.user
+            .delete-movie
+              = link_to 'Delete', movie_path(movie), method: :delete, data: { confirm: 'Are you sure?' }, class: 'red-text'
+      - if index != @movies.count - 1
+        %hr{style: 'margin: 40px;'}
+
+    %div.right-align{style: 'margin-top: 80px'}
+      = paginate @movies

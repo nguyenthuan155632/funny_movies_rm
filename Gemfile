@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Views
 gem 'haml-rails', '~> 2.0'
+gem 'kaminari'
 
 # Others
 gem 'acts_as_votable'
