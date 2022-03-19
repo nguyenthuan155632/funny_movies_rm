@@ -28,7 +28,7 @@
                   = current_user.email
             .col.l2.s12.right-align
               = button_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-primary'
-    .container{style: 'padding: 30px 0'}
+    .container{style: 'padding: 30px 0 50px'}
       = yield
     %footer.page-footer.teal
       .container

@@ -93,3 +93,9 @@ footer.page-footer {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.delete-movie {
+  position: absolute;
+  right: 40px;
+  bottom: -36px;
+}
