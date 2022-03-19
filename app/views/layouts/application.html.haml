@@ -33,6 +33,7 @@
               %a{class: 'btn btn-primary', href: new_user_session_path}
                 LOGIN
     .container{style: 'padding: 30px 0 50px'}
+      = render 'shared/flash_messages'
       = yield
     %footer.page-footer.teal
       .container

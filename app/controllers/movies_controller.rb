@@ -5,12 +5,21 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: :destroy
 
   def create
-    @movie = Movie.create!(movie_params)
+    @movie = Movie.new(movie_params)
+    if @movie.save
+      flash[:notice] = 'Movie was created successfully.'
+    else
+      flash[:error] = 'Movie was created failure.'
+    end
     redirect_to root_path
   end
 
   def destroy
-    @movie.destroy!
+    if @movie.destroy
+      flash[:notice] = 'Movie was destroyed successfully.'
+    else
+      flash[:error] = 'Movie was destroyed failure.'
+    end
     redirect_to root_path
   end
 

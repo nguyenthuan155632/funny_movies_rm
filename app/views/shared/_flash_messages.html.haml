@@ -1,0 +1,10 @@
+:javascript
+  $(document).ready(function(){
+    if ("#{flash[:notice]}") {
+      M.toast({html: "#{flash[:notice]}", classes: 'green-text'})
+    }
+
+    if ("#{flash[:error]}") {
+      M.toast({html: "#{flash[:error]}", classes: 'red-text'})
+    }
+  });
